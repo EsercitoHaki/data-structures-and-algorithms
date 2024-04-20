@@ -6,28 +6,31 @@ public class Main {
     {
         int duplicate = -1;
 
-        for(int i : nums)
-        {
+        // do for each array element
+        for (int j = 0; j < nums.length; j++) {
+            int i = nums[j];
+            // get the value of the current element
             int val = (i < 0) ? -i : i;
 
-            if(nums[val] >= 0)
-            {
+            // make element at index `val` negative if it is positive
+            if (nums[val] >= 0) {
                 nums[val] = -nums[val];
-            }else
-            {
-                duplicate = -nums[val];
+            } else {
+                // if the element is already negative, it is repeated
+                duplicate = val;
                 break;
             }
         }
 
-        for (int i = 0; i < nums.length; i++)
-        {
-            if (nums[i] < 0)
-            {
+        // restore the original array before returning
+        for (int i = 0; i < nums.length; i++) {
+            // make negative elements positive
+            if (nums[i] < 0) {
                 nums[i] = -nums[i];
             }
         }
 
+        // return duplicate element
         return duplicate;
     }
     public static void main(String[] args) {
